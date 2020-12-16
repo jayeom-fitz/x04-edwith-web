@@ -5,7 +5,7 @@ import Home from "../routes/Home";
 function RouteA() {
   return (
     <>
-      <Route exact path="/project_a/" component={Home} />
+      <Route exact path="/a" component={Home} />
     </>
   );
 }
