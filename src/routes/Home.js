@@ -8,123 +8,29 @@ const Container = styled.div`
   padding-top: 100px;
 `;
 
+const Box = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  margin-left: -150px;
+  margin-top: -150px;
+  background-color: #888888;
+`;
+
+const Text = styled.h1`
+  margin: 125px 110px;
+`;
+
 function Home() {
   return (
     <>
       <Header />
       <Container>
-      <pre>
-Text in a pre element
-is displayed in a fixed-width
-font, and it preserves
-both      spaces and
-line breaks
-</pre>
-<pre>
-Text in a pre element
-is displayed in a fixed-width
-font, and it preserves
-both      spaces and
-line breaks
-</pre>
-<pre>
-Text in a pre element
-is displayed in a fixed-width
-font, and it preserves
-both      spaces and
-line breaks
-</pre>
-<pre>
-Text in a pre element
-is displayed in a fixed-width
-font, and it preserves
-both      spaces and
-line breaks
-</pre>
-<pre>
-Text in a pre element
-is displayed in a fixed-width
-font, and it preserves
-both      spaces and
-line breaks
-</pre>
-<pre>
-Text in a pre element
-is displayed in a fixed-width
-font, and it preserves
-both      spaces and
-line breaks
-</pre>
-<pre>
-Text in a pre element
-is displayed in a fixed-width
-font, and it preserves
-both      spaces and
-line breaks
-</pre>
-<pre>
-Text in a pre element
-is displayed in a fixed-width
-font, and it preserves
-both      spaces and
-line breaks
-</pre>
-<pre>
-Text in a pre element
-is displayed in a fixed-width
-font, and it preserves
-both      spaces and
-line breaks
-</pre>
-<pre>
-Text in a pre element
-is displayed in a fixed-width
-font, and it preserves
-both      spaces and
-line breaks
-</pre>
-<pre>
-Text in a pre element
-is displayed in a fixed-width
-font, and it preserves
-both      spaces and
-line breaks
-</pre>
-<pre>
-Text in a pre element
-is displayed in a fixed-width
-font, and it preserves
-both      spaces and
-line breaks
-</pre>
-<pre>
-Text in a pre element
-is displayed in a fixed-width
-font, and it preserves
-both      spaces and
-line breaks
-</pre>
-<pre>
-Text in a pre element
-is displayed in a fixed-width
-font, and it preserves
-both      spaces and
-line breaks
-</pre>
-<pre>
-Text in a pre element
-is displayed in a fixed-width
-font, and it preserves
-both      spaces and
-line breaks
-</pre>
-<pre>
-Text in a pre element
-is displayed in a fixed-width
-font, and it preserves
-both      spaces and
-line breaks
-</pre>
+        <Box>
+          <Text>Hello</Text>
+        </Box>
       </Container>
       <Footer />
     </>
