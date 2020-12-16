@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div`
+  top: 0;
+  position: fixed;
   width: 100%;
   height: 100px;
   background-color: #505050;
