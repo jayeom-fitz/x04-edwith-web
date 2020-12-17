@@ -1,6 +1,6 @@
 import React from "react";
 import { HashRouter as Router, Route } from "react-router-dom";
-import RouteA from "../project-A/components/RouteA";
+import RouteTodo from "../project-todo/components/RouteTodo";
 import Home from "../routes/Home";
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <Router>
       <Route exact path="/" component={Home} />
 
-      <RouteA />
+      <RouteTodo />
     </Router>
   );
 }
