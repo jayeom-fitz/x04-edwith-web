@@ -57,7 +57,7 @@ function Header() {
       <Link to="/"><Logo /></Link>
 
       <Ul>
-        <Li><Link to="/todo"><Button>To do</Button></Link></Li>
+        <Li><Link to="/todo/list"><Button>To do</Button></Link></Li>
         <Li><Link to="/b"><Button>B</Button></Link></Li>
         <Li><Link to="/c"><Button>C</Button></Link></Li>
         <Li><Link to="/d"><Button>D</Button></Link></Li>
