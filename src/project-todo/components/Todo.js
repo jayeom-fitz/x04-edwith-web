@@ -19,6 +19,12 @@ const Detail = styled.h1`
   font: 500 0.8rem sans-serif;
 `;
 
+const Button = styled.button`
+  width: 10%;
+  padding: 0 1%; 
+  float: right;
+`;
+
 function Todo ({ todo }) {
   return (
     <Box>
@@ -27,6 +33,7 @@ function Todo ({ todo }) {
       </Content>
       <Detail>
         {todo}
+        <Button>▶</Button>
       </Detail>
     </Box>
   );

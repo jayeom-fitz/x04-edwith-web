@@ -26,7 +26,7 @@ const Button = styled.button`
   height: 100%;
   border: none;
   text-align: center;
-  font-size: 20px;
+  font-size: 15px;
   color: white;
   border-radius: 10px;
   cursor: pointer;
@@ -45,9 +45,9 @@ const Ul = styled.ul`
 `;
 
 const Li = styled.li`
-  width: 10%;
+  width: 12%;
   height: 100%;
-  margin-right: 30px;
+  margin-right: 20px;
   float: left;
 `;
 
@@ -57,7 +57,7 @@ function Header() {
       <Link to="/"><Logo /></Link>
 
       <Ul>
-        <Li><Link to="/todo/list"><Button>To do</Button></Link></Li>
+        <Li><Link to="/todo/list"><Button>TODO</Button></Link></Li>
         <Li><Link to="/b"><Button>B</Button></Link></Li>
         <Li><Link to="/c"><Button>C</Button></Link></Li>
         <Li><Link to="/d"><Button>D</Button></Link></Li>

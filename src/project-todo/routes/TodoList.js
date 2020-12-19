@@ -28,6 +28,7 @@ const Button = styled.button`
 
 const List = styled.div` 
   width: 33%;
+  padding-bottom: 100px;
   float: left;
 `;
 
@@ -55,6 +56,8 @@ function TodoList() {
 
         <List>
           <Box>TODO</Box>
+          <Todo todo="to do what" />
+          <Todo todo="to do what" />
           <Todo todo="to do what" />
           <Todo todo="to do what" />
           <Todo todo="to do what" />
