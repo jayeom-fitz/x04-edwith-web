@@ -3,6 +3,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import styled from "styled-components";
 import Todo from "../components/Todo"
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   top: 0;  
@@ -51,7 +52,9 @@ function TodoList() {
       <Header />
       <Container>
         <ButtonBar>
-          <Button>ADD TODO</Button>
+          <Link to={`/todo/write`}>
+            <Button>ADD TODO</Button>
+          </Link>
         </ButtonBar>
 
         <List>
