@@ -45,15 +45,20 @@ function Write() {
     if (todo === "" || who === "") {
       return;
     }
+    
+    const d = new Date(Date.now());
+    var date = d.getFullYear()+"/"+(d.getMonth()+1)+"/"+d.getDate()
+      +" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
 
     await dbService.collection("whatTodo").add({
       todo,
       who,
       priority,
-      createdAt: Date.now(),
+      createdAt: date,
       state: 1
     });
 
+    window.history.back();
   };
 
   return (

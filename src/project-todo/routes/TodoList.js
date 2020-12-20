@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import styled from "styled-components";
 import Todo from "../components/Todo"
 import { Link } from "react-router-dom";
+import { dbService } from "../../fbase";
 
 const Container = styled.div`
   top: 0;  
@@ -46,6 +47,31 @@ const Box = styled.div`
 
 function TodoList() {
   const [todos, setTodos] = useState([]);
+  const [doings, setDoings] = useState([]);
+  const [dones, setDones] = useState([]);
+
+  const getTodos = async () => {
+    const dbTodos = await dbService.collection("whatTodo").get();
+    dbTodos.forEach((document) => {
+      const todoObject = {
+        ...document.data(),
+        id: document.id,
+      };
+      setTodos(prev => [todoObject, ...prev]);
+    });
+  };
+
+  const getDoings = async () => {
+
+  };
+
+  const getDones = async () => {
+
+  };
+
+  useEffect(() => {
+    getTodos();
+  }, []);
 
   return (
     <>
@@ -59,6 +85,9 @@ function TodoList() {
 
         <List>
           <Box>TODO</Box>
+          {todos.map((todoObj) => (
+            <Todo key={todoObj.id} todoObj={todoObj} />
+          ))}
         </List>
         <List>
           <Box>DOING</Box>

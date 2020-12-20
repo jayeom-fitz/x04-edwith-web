@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { AiFillEdit, AiFillCaretRight } from "react-icons/ai";
 
 const Box = styled.div`
   width: 95%;
@@ -16,24 +17,38 @@ const Content = styled.h1`
 
 const Detail = styled.h1`
   padding: 1% 0 0 5%;
-  font: 500 0.8rem sans-serif;
+  font: 500 0.6rem sans-serif;
 `;
 
 const Button = styled.button`
   width: 10%;
-  padding: 0 1%; 
+  padding: 1% 2%; 
+  margin: 0 2%;
   float: right;
+  border: none;
+  border-radius: 100%;
+
+  &:hover {
+    background-color: #34EE15;
+    color: white;
+  }
 `;
 
-function Todo ({ todo }) {
+function Todo ({ todoObj }) {
   return (
     <Box>
       <Content>
-        {todo}
+        {todoObj.todo.length < 10 ? todoObj.todo : todoObj.todo.substring(0,9) + "..."}
       </Content>
       <Detail>
-        {todo}
-        <Button>▶</Button>
+        {todoObj.createdAt} - {todoObj.priority}순위
+        
+        {todoObj.state === "3" ? 
+          <></>
+          :
+          <Button><AiFillCaretRight /></Button>
+        }
+        <Button><AiFillEdit /></Button>
       </Detail>
     </Box>
   );
