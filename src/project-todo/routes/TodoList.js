@@ -51,7 +51,7 @@ function TodoList() {
   const [dones, setDones] = useState([]);
 
   const getTodos = async () => {
-    let dbTodos = await dbService.collection("whatTodo").where("state", "==", 1).orderBy("priority").get();
+    let dbTodos = await dbService.collection("whatTodo").where("state", "==", 1).orderBy("priority", "desc").get();
     dbTodos.forEach((document) => {
       const todoObject = {
         ...document.data(),
