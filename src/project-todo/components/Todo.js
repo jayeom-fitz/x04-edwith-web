@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { AiFillEdit, AiFillCaretRight } from "react-icons/ai";
+import { dbService } from "../../fbase";
 
 const Box = styled.div`
   width: 95%;
@@ -35,6 +36,16 @@ const Button = styled.button`
 `;
 
 function Todo ({ todoObj }) {
+  const onMoveRight = async (event) => {
+    const ok = window.confirm("Are you sure that this TODO move to the right?");
+    if(ok) {
+      await dbService.doc(`whatTodo/${todoObj.id}`).update({
+        state: todoObj.state + 1
+      });
+      window.history.go(0);
+    }
+  };
+
   return (
     <Box>
       <Content>
@@ -43,10 +54,10 @@ function Todo ({ todoObj }) {
       <Detail>
         {todoObj.createdAt} - {todoObj.priority}순위
         
-        {todoObj.state === "3" ? 
+        {todoObj.state === 3 ? 
           <></>
           :
-          <Button><AiFillCaretRight /></Button>
+          <Button onClick={onMoveRight}><AiFillCaretRight /></Button>
         }
         <Button><AiFillEdit /></Button>
       </Detail>

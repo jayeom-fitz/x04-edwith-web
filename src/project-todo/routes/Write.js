@@ -38,7 +38,7 @@ function Write() {
   };
   const onPriorityChange = (event) => {
     const {target: {value},} = event;
-    setPriority(value);
+    setPriority(parseInt(value));
   };
 
   const onWrite = async (event) => {

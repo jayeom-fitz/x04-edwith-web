@@ -51,7 +51,7 @@ function TodoList() {
   const [dones, setDones] = useState([]);
 
   const getTodos = async () => {
-    const dbTodos = await dbService.collection("whatTodo").get();
+    let dbTodos = await dbService.collection("whatTodo").where("state", "==", 1).orderBy("priority").get();
     dbTodos.forEach((document) => {
       const todoObject = {
         ...document.data(),
@@ -59,14 +59,24 @@ function TodoList() {
       };
       setTodos(prev => [todoObject, ...prev]);
     });
-  };
 
-  const getDoings = async () => {
+    dbTodos = await dbService.collection("whatTodo").where("state", "==", 2).get();
+    dbTodos.forEach((document) => {
+      const todoObject = {
+        ...document.data(),
+        id: document.id,
+      };
+      setDoings(prev => [todoObject, ...prev]);
+    });
 
-  };
-
-  const getDones = async () => {
-
+    dbTodos = await dbService.collection("whatTodo").where("state", "==", 3).get();
+    dbTodos.forEach((document) => {
+      const todoObject = {
+        ...document.data(),
+        id: document.id,
+      };
+      setDones(prev => [todoObject, ...prev]);
+    });
   };
 
   useEffect(() => {
@@ -91,9 +101,15 @@ function TodoList() {
         </List>
         <List>
           <Box>DOING</Box>
+          {doings.map((todoObj) => (
+            <Todo key={todoObj.id} todoObj={todoObj} />
+          ))}
         </List>
         <List>
           <Box>DONE</Box>
+          {dones.map((todoObj) => (
+            <Todo key={todoObj.id} todoObj={todoObj} />
+          ))}
         </List>
 
       </Container>
