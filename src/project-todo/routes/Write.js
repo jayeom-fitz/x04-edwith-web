@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { dbService } from "../../fbase";
 
 const Container = styled.div`
   top: 0;  
@@ -21,35 +23,68 @@ const Button = styled.button`
   margin-top: 20px;
 `;
 
-function Todo() {
+function Write() {
+  const [todo, setTodo] = useState("");
+  const [who, setWho] = useState("");
+  const [priority, setPriority] = useState(1);
+
+  const onTodoChange = (event) => {
+    const {target: {value},} = event;
+    setTodo(value);
+  };
+  const onWhoChange = (event) => {
+    const {target: {value},} = event;
+    setWho(value);
+  };
+  const onPriorityChange = (event) => {
+    const {target: {value},} = event;
+    setPriority(value);
+  };
+
+  const onWrite = async (event) => {
+    if (todo === "" || who === "") {
+      return;
+    }
+
+    await dbService.collection("whatTodo").add({
+      todo,
+      who,
+      priority,
+      createdAt: Date.now(),
+      state: 1
+    });
+
+  };
+
   return (
     <>
       <Header />
+      
       <Container>
         <MainTitle>ADD TODO</MainTitle>
 
         <Title>What To Do ?</Title>
-        <input type="text" name="todo" style={{
+        <input onChange={onTodoChange} type="text" name="todo" style={{
           width:'80%', height:'20px'}} maxLength="50" required />
 
         <Title>Who Do That ?</Title>
-        <input type="text" name="who" style={{
+        <input onChange={onWhoChange} type="text" name="who" style={{
           width:'50%', height:'20px'}} maxLength="30" required />
 
         <Title>Select Priority</Title>
         <div>
-          <input type="radio" name="priority" value="1" checked="checked" />1 
-          <input type="radio" name="priority" value="2" />2 
-          <input type="radio" name="priority" value="3" />3
+          <input onChange={onPriorityChange} style={{margin:'0 10px 0 10px'}} type="radio" name="priority" value="1" checked="checked" />1 
+          <input onChange={onPriorityChange} style={{margin:'0 10px 0 10px'}} type="radio" name="priority" value="2" />2 
+          <input onChange={onPriorityChange} style={{margin:'0 10px 0 10px'}} type="radio" name="priority" value="3" />3
         </div>        
-
-        <Button style={{}}>cancle</Button>
-        <Button style={{float:'right'}}>clear</Button>
-        <Button style={{float:'right'}}>submit</Button>
+        
+        <Button onClick={onWrite}>WRITE</Button>
+        <Link to="/todo/list"><Button>CANCEL</Button></Link>
       </Container>
+
       <Footer />
     </>
   );
 }
 
-export default Todo;
+export default Write;

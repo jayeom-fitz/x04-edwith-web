@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import styled from "styled-components";
@@ -44,9 +44,9 @@ const Box = styled.div`
   color: white;
 `;
 
-
-
 function TodoList() {
+  const [todos, setTodos] = useState([]);
+
   return (
     <>
       <Header />
@@ -59,20 +59,12 @@ function TodoList() {
 
         <List>
           <Box>TODO</Box>
-          <Todo todo="to do what" />
-          <Todo todo="to do what" />
-          <Todo todo="to do what" />
-          <Todo todo="to do what" />
-          <Todo todo="to do what" />
-          <Todo todo="to do what" />
         </List>
         <List>
           <Box>DOING</Box>
-          <Todo todo="to do what" /><Todo todo="to do what" />
         </List>
         <List>
           <Box>DONE</Box>
-          <Todo todo="to do what" />
         </List>
 
       </Container>
