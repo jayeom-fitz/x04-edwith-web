@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { AiFillEdit, AiFillCaretRight } from "react-icons/ai";
 import { dbService } from "../../fbase";
 
@@ -58,7 +59,9 @@ function Todo ({ todoObj }) {
           :
           <Button onClick={onMoveRight}><AiFillCaretRight /></Button>
         }
-        <Button><AiFillEdit /></Button>
+        <Link to={`/todo/edit/${todoObj.id}`} >
+          <Button><AiFillEdit /></Button>
+        </Link>
       </Detail>
     </Box>
   );
