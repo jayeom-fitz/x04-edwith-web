@@ -49,7 +49,7 @@ function Todo ({ todoObj }) {
   return (
     <Box>
       <Content>
-        {todoObj.todo.length < 10 ? todoObj.todo : todoObj.todo.substring(0,9) + "..."}
+        {todoObj.todo.length < 15 ? todoObj.todo : todoObj.todo.substring(0,9) + "..."}
       </Content>
       <Detail>
         {todoObj.createdAt} - {todoObj.priority}순위
