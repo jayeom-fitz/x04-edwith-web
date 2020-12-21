@@ -42,7 +42,6 @@ function Todo ({ todoObj }) {
       await dbService.doc(`whatTodo/${todoObj.id}`).update({
         state: todoObj.state + 1
       });
-      window.history.go(0);
     }
   };
 

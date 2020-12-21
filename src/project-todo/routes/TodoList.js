@@ -50,37 +50,30 @@ function TodoList() {
   const [doings, setDoings] = useState([]);
   const [dones, setDones] = useState([]);
 
-  const getTodos = async () => {
-    let dbTodos = await dbService.collection("whatTodo").where("state", "==", 1).orderBy("priority", "desc").get();
-    dbTodos.forEach((document) => {
-      const todoObject = {
-        ...document.data(),
-        id: document.id,
-      };
-      setTodos(prev => [todoObject, ...prev]);
-    });
-
-    dbTodos = await dbService.collection("whatTodo").where("state", "==", 2).get();
-    dbTodos.forEach((document) => {
-      const todoObject = {
-        ...document.data(),
-        id: document.id,
-      };
-      setDoings(prev => [todoObject, ...prev]);
-    });
-
-    dbTodos = await dbService.collection("whatTodo").where("state", "==", 3).get();
-    dbTodos.forEach((document) => {
-      const todoObject = {
-        ...document.data(),
-        id: document.id,
-      };
-      setDones(prev => [todoObject, ...prev]);
-    });
-  };
-
   useEffect(() => {
-    getTodos();
+    dbService.collection("whatTodo").where("state", "==", 1).orderBy("priority").onSnapshot((snapshot) => {
+      const todoArray = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setTodos(todoArray);
+    });
+
+    dbService.collection("whatTodo").where("state", "==", 2).orderBy("priority").onSnapshot((snapshot) => {
+      const todoArray = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setDoings(todoArray);
+    });
+
+    dbService.collection("whatTodo").where("state", "==", 3).orderBy("priority").onSnapshot((snapshot) => {
+      const todoArray = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setDones(todoArray);
+    });
   }, []);
 
   return (
