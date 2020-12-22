@@ -5,7 +5,7 @@ import BookList from "../routes/BookList";
 function RouteBook() {
   return (
     <Router>
-      <Route exact path="/todo/list" component={BookList} />
+      <Route exact path="/book/list" component={BookList} />
     </Router>
   );
 }
